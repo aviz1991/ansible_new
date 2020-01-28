@@ -1,0 +1,22 @@
+- name: run clear counters command
+  hosts: R1
+  gather_facts: false
+
+  tasks:
+    - name: run clear counters
+      ios_command:
+       authorize: yes
+       commands: 
+        - command: 'clear counters GigabitEthernet0/1'
+          prompt: 'Clear "show interface" counters on this interface \[confirm\]'
+          answer: 'y'
+        - command: 'clear counters GigabitEthernet0/2'
+          prompt: '[confirm]'
+          answer: "\r"
+
+      register: print_output
+
+    -  debug: var=print_output.stdout_lines
+
+    - name: save output to a file
+      copy: content="{{ print_output.stdout[0] }}" dest="./output/{{ inventory_hostname }}.txt"

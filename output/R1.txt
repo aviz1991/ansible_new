@@ -1,0 +1,1 @@
+Clear "show interface" counters on this interface [confirm]y
