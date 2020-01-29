@@ -1,0 +1,16 @@
+---
+- name: NX-OS interface configuration with aggregate with ip
+  hosts: NXOS
+  tasks: 
+    - name: batch config interface with aggregate
+      nxos_l3_interface: 
+        aggregate: 
+          - { name: Ethernet2/10, ipv4: 1.1.1.1/24  }
+          - { name: Ethernet2/11, ipv4: 2.2.2.2/24  }
+      
+      register: output
+
+    - name: show output
+      debug:
+        var: output
+...

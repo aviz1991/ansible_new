@@ -1,0 +1,19 @@
+---
+- name: NX-OS interface configuration with aggregate
+  hosts: NXOS
+  tasks: 
+    - name: batch config interface with aggregate
+      nxos_interface: 
+        aggregate: 
+          - { name: Ethernet2/10, description: Int2/10  }
+          - { name: Ethernet2/11, description: Int2/11  }
+        duplex: full
+        speed: 100
+        admin_state: up
+      
+      register: output
+
+    - name: show output
+      debug:
+        var: output
+...
