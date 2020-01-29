@@ -1,0 +1,15 @@
+- name: Setting up L3 interface on the router
+  hosts: R1
+  gather_facts: false
+  
+
+  tasks:
+    - name: Set GigabitEthernet0/3 IPv4 address
+      ios_l3_interface:
+       name: GigabitEthernet0/3
+       ipv4: 192.168.123.22/24
+       state: absent
+    
+      register: print_output
+
+    -  debug: var=print_output.stdout_lines

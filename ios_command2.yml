@@ -1,0 +1,11 @@
+---
+- name: run commands with interactivity
+  hosts: R1
+  tasks: 
+    - name: run IOS command with Prompt
+      ios_command: 
+        commands:
+          - command: 'clear counters gigabitEthernet0/0'
+            prompt: 'Clear "show interface" counters on this interface \[confirm\]'
+            answer: 'y'
+...

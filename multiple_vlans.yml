@@ -1,0 +1,15 @@
+- name: Adding multiple vlans to switch
+  hosts: S1
+  gather_facts: false
+  
+
+  tasks:
+    - name: Merge provided configuration with device configuration
+      ios_vlan:
+       vlan_id: 100
+       name: test-vlan
+       state: present
+    
+      register: print_output
+
+    -  debug: var=print_output.stdout_lines

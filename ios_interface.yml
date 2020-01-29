@@ -1,0 +1,15 @@
+- name: Setting up L3 interface on router
+  hosts: R1
+  gather_facts: false
+  
+
+  tasks:
+    - name: make interface up on router
+      ios_interface:
+       name: GigabitEthernet0/2
+       enabled: yes
+       state: up
+    
+      register: print_output
+
+    -  debug: var=print_output.stdout_lines

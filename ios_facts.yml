@@ -1,0 +1,15 @@
+---
+- name: Collect IOS Device Facts
+  hosts: ios-devices
+  tasks: 
+    - name: collect facts
+      ios_facts: 
+        gather_subset: all
+      
+      register: output
+
+    - name: show output
+      debug:
+        var: output
+   
+...
