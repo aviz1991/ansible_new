@@ -1,0 +1,18 @@
+---
+- name: Backup show run of nxos device
+  hosts: NXOS
+  gather_facts: false
+
+  tasks:
+    - name: run multiple commands on remote nxos nodes
+      nxos_command:
+        commands:
+          - show version
+          - show run
+
+      register: print_output
+
+    -  debug: var=print_output.stdout_lines
+
+    - name: save output to a file
+      copy: content="{{ print_output.stdout_lines[1] }}" dest="./output/{{ inventory_hostname }}.txt"

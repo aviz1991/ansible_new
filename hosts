@@ -1,3 +1,6 @@
 [ios-devices]
 R1
 S1
+
+[nxos-devices]
+NXOS

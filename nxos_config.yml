@@ -1,0 +1,15 @@
+---
+- name: NX-OS config save when modified
+  hosts: NXOS
+  tasks: 
+    - name: save config when modified
+      nxos_config: 
+        lines: hostname {{ inventory_hostname }} 
+        save_when: modified
+      
+      register: output
+
+    - name: show output
+      debug:
+        var: output
+...

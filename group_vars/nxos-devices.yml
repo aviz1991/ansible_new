@@ -1,0 +1,9 @@
+---
+ansible_connection: network_cli
+ansible_network_os: nxos
+ansible_user: aviz
+ansible_password: cisco
+ansible_become: yes
+ansible_become_method: enable
+authorize: yes
+ansible_become_pass: cisco
